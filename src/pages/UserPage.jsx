@@ -42,7 +42,7 @@ export class UserPage extends Component {
   //   this.props.getAllLists()
   // }
 
-  componentDidMount() {
+  componentDidMount() { 
     this.props.getAllLists()
   }
 

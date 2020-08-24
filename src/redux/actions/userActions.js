@@ -3,48 +3,60 @@ import {
   SET_ERRORS,
   CLEAR_ERRORS,
   LOADING_UI,
-  SET_UNAUTHENTICATED,
-  LOADING_USER
+  STOP_LOADING_UI
 } from '../types';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+
+//let userID
 
 export const signupUser = (newUserData, history) => (dispatch) => {
   dispatch({type: LOADING_UI});
   axios
     .post('/users/signup', newUserData)
     .then(res => {
-      console.log(res.data)
+      //userID = res.data.data.user._id
       setAuthorizationHeader(res.data.token)
       dispatch({
         type: SET_USER,
         payload: res.data
       });
+      dispatch({type: STOP_LOADING_UI});
       dispatch({ type: CLEAR_ERRORS });
       //history.push('/');
     }).catch(err => {
       dispatch({
         type: SET_ERRORS,
-        payload: err.response.data
+        payload: err.response,
+        //payload: err.response.data
       });
     })
 }
 
-export const getUserData = () => (dispatch) => {
-  dispatch({ type: LOADING_USER });
+export const loginUser = (userData, history) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
   axios
-    .get('/lists')
+    .post('/users/login', userData)
     .then((res) => {
+      const decodedUser = jwtDecode(res.data.token)
+      //userID = decodedUser.id._id
+      setAuthorizationHeader(res.data.token);
       dispatch({
         type: SET_USER,
-        payload: res.data
+        payload: {data: {user: decodedUser.id}}
       });
+      dispatch({type: STOP_LOADING_UI});
+      dispatch({ type: CLEAR_ERRORS });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response
+      });
+    });
 };
 
 const setAuthorizationHeader = (token) => {
-  console.log(jwtDecode(token))
   const userToken = `Bearer ${token}`;
   localStorage.setItem('userToken', userToken);
   axios.defaults.headers.common['Authorization'] = userToken;

@@ -14,7 +14,7 @@ class SignUp extends Component {
       email: '',
       password: '',
       confirmPassword: '',
-      errors: {}
+      errors: ''
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -25,9 +25,9 @@ class SignUp extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({
-      loading: true
-    });
+    // this.setState({
+    //   loading: true
+    // });
     const newUserData = {
       "name": this.state.name,
       "email":  this.state.email,
@@ -49,17 +49,25 @@ class SignUp extends Component {
 
 
     return (
-      <Form 
-        signUp 
-        onChange={this.handleChange} 
-        onSubmit={this.handleSubmit}
-        email={email}
-        name={name}
-        password={password}
-        confirmPassword={confirmPassword}
-        errors={errors}
-        loading={loading}
-      />
+      <React.Fragment>
+        <Form 
+          signUp 
+          onChange={this.handleChange} 
+          onSubmit={this.handleSubmit}
+          email={email}
+          name={name}
+          password={password}
+          confirmPassword={confirmPassword}
+          errors={errors}
+          loading={loading}
+        />
+        {/* {
+          errors !== '' ? <p>{errors}</p> : null
+        }
+        {
+          loading && <p>loading...</p> 
+        } */}
+      </React.Fragment>
     );
   }
 }

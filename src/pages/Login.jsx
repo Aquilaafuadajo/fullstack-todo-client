@@ -4,7 +4,7 @@ import Form from '../components/form/Form';
 
 // Redux stuff
 import { connect } from 'react-redux';
-import { signupUser } from '../redux/actions/userActions';
+import { loginUser } from '../redux/actions/userActions';
 
 class Login extends Component {
   constructor() {
@@ -12,7 +12,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      errors: {}
+      errors: ''
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -23,19 +23,18 @@ class Login extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({
-      loading: true
-    });
+    // this.setState({
+    //   loading: true
+    // });
     const newUserData = {
       "email":  this.state.email,
       "password": this.state.password
     }
-    console.log(this.props.history)
-    this.props.signupUser(newUserData, this.props.history);
+    this.props.loginUser(newUserData, this.props.history);
   };
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value 
     });
   };
   render() {
@@ -43,7 +42,6 @@ class Login extends Component {
       UI: { loading }
     } = this.props;
     const { errors, email, password } = this.state;
-
 
     return (
       <Form 
@@ -65,5 +63,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { signupUser }
+  { loginUser }
 )(Login);

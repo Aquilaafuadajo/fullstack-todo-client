@@ -13,10 +13,11 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case SET_ERRORS:
+      if(action.payload === undefined) return {...state, loading: false, errors: 'something went wrong. Try again'}
       return {
         ...state,
         loading: false,
-        errors: action.payload
+        errors: action.payload.data
       }
     case CLEAR_ERRORS:
       return {

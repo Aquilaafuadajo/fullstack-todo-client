@@ -3,7 +3,7 @@ import './Form.css';
 import {Link} from 'react-router-dom';
 
 function Form({...props}) {
-  const {onSubmit, onChange, signUp, name, email, password, confirmPassword} = props
+  const {onSubmit, onChange, signUp, name, email, password, confirmPassword, loading, errors} = props
   return (
     <div className='form-container'>
       <form noValidate onSubmit={onSubmit}>
@@ -45,19 +45,19 @@ function Form({...props}) {
         </>
       : 
         <>
-          <div class="input-group">
-            <div class="inset">
+          <div className="input-group">
+            <div className="inset">
               <input onChange={onChange} autoComplete="off" type="email" name='email' value={email} required />
-              <label class="input-label" htmlFor='email' value={email}>
-                <span class="input-label-content">Email</span>
+              <label className="input-label" htmlFor='email' value={email}>
+                <span className="input-label-content">Email</span>
               </label>
             </div>
           </div>
-          <div class="input-group">
-            <div class="inset">
+          <div className="input-group">
+            <div className="inset">
               <input onChange={onChange} autoComplete="off" type="password" name='password' value={password} required />
-              <label class="input-label" htmlFor='password' value={password}>
-                <span class="input-label-content">Password</span>
+              <label className="input-label" htmlFor='password' value={password}>
+                <span className="input-label-content">Password</span>
               </label>
             </div>
           </div>
@@ -66,9 +66,22 @@ function Form({...props}) {
       <button className='input-group btn' type='submit'>
         {signUp? 'sign up' : 'login'}
       </button>
-      <small className='login-link'>
-        already have an account? login <Link to='/login'>here</Link>
-      </small>
+      {
+        loading && <small>loading...</small>
+      }
+      {
+        errors && <small style={{color: 'red'}} >{errors.message}</small>
+      }
+     {
+       signUp? 
+        <small className='login-link'>
+          already have an account? login <Link to='/login'>here</Link>
+        </small>
+        :
+        <small className='login-link'>
+          don't have an account? sign up <Link to='/signup'>here</Link>
+        </small>
+     }
     </form>
     </div>
   )

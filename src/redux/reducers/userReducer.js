@@ -2,13 +2,14 @@ import {
   SET_USER,
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
-  LOADING_USER
+  LOADING_USER,
+  SET_LISTS,
+  CREATE_LIST
 } from '../types';
 
 const initialState = {
   authenticated: false,
   loading: false,
-  credentials: {}
 }
 
 export default function(state = initialState, action) {

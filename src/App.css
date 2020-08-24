@@ -104,6 +104,10 @@
   cursor: pointer;
 }
 
+.list-item {
+  position: relative;
+}
+
 .list-item:hover {
   background: rgb(31, 29, 29);
 }
@@ -111,8 +115,8 @@
 .task {
   cursor: pointer;
 }
-.task:hover {
-  background: #11998e4b;
+.task:hover .tooltiptext{
+  visibility: visible;
 }
 
 .green {
@@ -152,4 +156,20 @@
   border-radius: 7px;
   background: rgba(100, 70, 13, 0.5);
   color: brown;
+}
+
+.task .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  right: 20px;
+  top: -10px;
+  z-index: 1;
 }

@@ -48,7 +48,7 @@ export class TaskPage extends Component {
     const listMarkup = (name, id, _id, status) => (<div onClick={this.handleUpdate(_id, status)} className={`${status? 'green': null} list-item task`} key={id}>
                                         <h3>{name}</h3>
                                         <button className='del' name='add-task' onClick={this.handleDelete(_id)}>-</button>
-                                        {/* <button name='add-task' onClick={this.handleUpdate(_id, status)}>update</button> */}
+                                        <span class="tooltiptext">click to update</span>
                                       </div>)
 
     return (

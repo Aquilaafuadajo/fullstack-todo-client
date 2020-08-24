@@ -38,7 +38,6 @@ export class TaskPage extends Component {
     if(!this.state.description) return
     const task = {description: this.state.description}
     this.props.addTask(task, this.props.location.pathname.split('/')[2])
-    this.setState({description: ''})
     this.props.getAllLists()
   }
 

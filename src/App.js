@@ -17,7 +17,7 @@ import store from './redux/store';
 import {persistor} from './redux/store';
 import {PersistGate} from 'redux-persist/integration/react'
 
-axios.defaults.baseURL = 'https://aquils-todo.herokuapp.com/api/v1'  //'http://localhost:3001/api/v1' //'https://aquils-todo.herokuapp.com/api/v1' 
+axios.defaults.baseURL =   'http://localhost:3001/api/v1' //'https://aquils-todo.herokuapp.com/api/v1' 
 const token = localStorage.userToken  
 if(token) {
   axios.defaults.headers.common['Authorization'] = token; 

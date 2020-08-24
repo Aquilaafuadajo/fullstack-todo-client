@@ -143,3 +143,13 @@
   justify-content: space-around;
   padding: 0 70px;
 }
+
+.home-link {
+  padding: 10px;
+}
+
+.home-link:hover {
+  border-radius: 7px;
+  background: rgba(100, 70, 13, 0.5);
+  color: brown;
+}

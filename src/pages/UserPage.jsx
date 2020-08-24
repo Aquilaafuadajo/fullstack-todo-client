@@ -35,7 +35,7 @@ export class UserPage extends Component {
 
   logout = () => {
     window.localStorage.removeItem('userToken')
-    window.location.href = 'http://localhost:3000/login'
+    window.location.href = 'https://fullsnack-todo.herokuapp.com/login'
     console.log(this.props)
   }
 

@@ -36,7 +36,6 @@ export class UserPage extends Component {
   logout = () => {
     window.localStorage.removeItem('userToken')
     window.location.href = 'https://fullsnack-todo.herokuapp.com/login'
-    console.log(this.props)
   }
 
   // componentWillMount() {
@@ -49,7 +48,6 @@ export class UserPage extends Component {
 
   render() {
     const {loading, user, data} = this.props
-    console.log('rendered')
 
     const listMarkup = (name, id, _id) => (
                                         <div className="list-item" key={id}>

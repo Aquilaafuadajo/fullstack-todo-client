@@ -18,7 +18,6 @@ class Login extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
-      console.log(this.state.errors)
     }
   }
   handleSubmit = (event) => {

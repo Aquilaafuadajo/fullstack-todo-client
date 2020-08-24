@@ -46,7 +46,6 @@ export class TaskPage extends Component {
     const listID = this.props.location.pathname.split('/')[2]
     const list = this.props.data.lists[this.props.data.lists.findIndex(list => list._id === listID)]
     const {loading} = this.props
-    console.log(list)
     const listMarkup = (name, id, _id, status) => (<div onClick={this.handleUpdate(_id, status)} className={`${status? 'green': null} list-item task`} key={id}>
                                         <h3>{name}</h3>
                                         <button className='del' name='add-task' onClick={this.handleDelete(_id)}>-</button>

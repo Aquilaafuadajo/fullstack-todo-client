@@ -20,7 +20,6 @@ class SignUp extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
-      console.log(this.state.errors)
     }
   }
   handleSubmit = (event) => {
@@ -46,7 +45,6 @@ class SignUp extends Component {
       UI: { loading }
     } = this.props;
     const { errors, name, email, password, confirmPassword } = this.state;
-
 
     return (
       <React.Fragment>
